@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Crystal-Game</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <!-- jquery api -->
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Audiowide|Bungee" rel="stylesheet">
+    <!-- Game Favicon -->
+    <link href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAuMDX/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALjA1/wAAAAAuMDX/LjA1/y4wNf8uMDX/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAuMDX/LjA1/y4wNf8uMDX6LjA1/y4wNf8uMDX/LjA1/y4wNf8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAuMDX/LjA1/y4wNf8uMDX/LjA1/y4wNf8uMDX/LjA1/y4wNf8uMDX/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALjA1/y4wNf8uMDX/LjA1/y4wNf8uMDX/LjA1/y4wNf8uMDX/LjA1/y4wNf8uMDX/LjA1/y4wNf8uMDX/LjA1/y4wNf8uMDX/LjA1/y4wNf8uMDX/LjA1/y4wNf8uMDX/l5iaWAAAAAAuMDVwLjA1/y4wNf8uMDX/LjA1/y4wNf8uMDX/LjA1/y4wNf8uMDX/LjA1/y4wNbguMDX/LjA1/wAAAAAuMDX/AAAAAC4wNf8uMDX/LjA1/y4wNf8AAAAALjA1/wAAAAAuMDX/LjA1/wAAAAAAAAAALjA1/1tcYHAuMDX/LjA1/y4wNf8uMDXTLjA1/y4wNf8uMDX/LjA1/wAAAAAuMDX/LjA1/y4wNf8AAAAAAAAAAC4wNf8uMDX/AAAAAC4wNf8AAAAALjA1/y4wNf8uMDX/LjA1/wAAAAAuMDX/AAAAAC4wNf8uMDX/AAAAAAAAAAAAAAAALjA1/y4wNf8uMDX/LjA1/y4wNf8uMDX/LjA1/y4wNf8uMDX/LjA1/y4wNf8uMDX/AAAAAAAAAAAAAAAAAAAAAAAAAAAuMDX/LjA1/y4wNf8uMDX/LjA1/y4wNf8uMDX/LjA1/y4wNf8uMDX/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAP//AAC//QAAD/AAAAfgAAAH4AAAAAAAABwAAAAUKQAAoBEAAJQpAADAAwAA4AcAAP//AAD//wAA//8AAA==" rel="icon" type="image/x-icon" />
+</head>
+
+<body>
+    <div class="container text-center">
+        <div class="jumbotron">
+            <h1 class="text-center">The Crystals Collector Game</h1>
+            <!-- Game explanation -->
+            <div id="flip" class="text-center">
+                <h3>Click here to see game instructions</h3></div>
+            <div id="panel" style="padding: 50px; display: none;">
+                <p class="text-left"><b>Game instructions:</b> You will need to guess the values of the crystals by clicking on any of the four crystals displayed below. The goal fo the game is to match the computer's number at the start of the game. Play by clicking on a crystal, it will add a specific amount of points to yours total score.</p>
+                <p class="text-left">You win if your total score matches the computer's number. You lose if your score goes above that of the computer's number. The game restarts whenever your win or loose. When the game begins again, computer's number will reset and your crystal's values also resets. Good Luck!</p>
+            </div>
+        </div>
+        <!-- <input type="button" class="btn btn-info" onclick="myFunction()" value="Show/Hide"> -->
+        <!-- Game score display area -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title text-center">Computer Random Number</h3>
+                        </div>
+                        <div class="panel-body text-center">
+                            <div id="map" style="width: 100%;height: 75px">
+                                <h1><span id="js-computer">0</span></h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title text-center">Score Stats</h3>
+                        </div>
+                        <div class="panel-body">
+                            <div id="map" style="width: 100%;height: 75px">
+                                <h2 class="wins">Wins so far: <span id="wins">0</span></h2>
+                                <h2 class="losses">Losses so far: <span id="losses">0</span></h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title text-center">You Guesses Added-up</h3>
+                        </div>
+                        <div class="panel-body text-center">
+                            <div id="map" style="width: 100%;height: 75px">
+                                <h1><span id="js-userScore" class="totalScore">0</span></h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- crystal area -->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3 text-center">
+                <div id="crystal01" class="crystal01"><img class="zoomimg" src="assets/images/blue.png"></div>
+            </div>
+            <!-- <div id="crystal0temp ">temp</div> -->
+            <div class="col-sm-3 text-center">
+                <div id="crystal02" class="crystal02"><img class="zoomimg" src="assets/images/green.png"></div>
+                <div id="crystal02"></div>
+            </div>
+            <div class="col-sm-3 text-center">
+                <div id="crystal03" class="crystal03"><img class="zoomimg" src="assets/images/red.png"></div>
+                <div id="crystal03"></div>
+            </div>
+            <div class="col-sm-3 text-center">
+                <div id="crystal04" class="crystal04"><img class="zoomimg" src="assets/images/yellow.png"></div>
+                <div id="crystal04"></div>
+            </div>
+        </div>
+        <div class="col-md-12 text-center jumbotron">
+            <footer class="footer">
+                <p>&copy; 2017 Sanish John</p>
+            </footer>
+        </div>
+    </div>
+    <script type="text/javascript" src="assets/javascript/game.js"></script>
+    </div>
+</body>
+
+</html>
