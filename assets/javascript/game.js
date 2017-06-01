@@ -112,6 +112,8 @@ $(document).ready(function() {
         crystal04 = 0;
         totalScore = 0;
         computer = 0;
+        $('#js-userScore').text(0);
+        beginGame()
     };
 
 });
